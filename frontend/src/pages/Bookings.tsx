@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { bookingsApi } from '../api/bookings';
 import type { Booking } from '../types';
@@ -10,6 +10,7 @@ const PAGE_SIZE = 10;
 
 export function Bookings() {
   const { user } = useAuth();
+  const location = useLocation();
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [totalPages, setTotalPages] = useState(0);
   const [totalElements, setTotalElements] = useState(0);
@@ -17,6 +18,7 @@ export function Bookings() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Refetch when user, page, or route changes (e.g. after navigating back from CreateBooking)
   useEffect(() => {
     if (!user?.userId) return;
     setLoading(true);
@@ -29,7 +31,7 @@ export function Bookings() {
       })
       .catch((err) => setError(getApiErrorMessage(err)))
       .finally(() => setLoading(false));
-  }, [user?.userId, page]);
+  }, [user?.userId, page, location.pathname]);
 
   const canApprove = user && canApproveBookings(user.role);
 
