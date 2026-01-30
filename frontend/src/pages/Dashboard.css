@@ -1,0 +1,41 @@
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.dashboard-card h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.dashboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dashboard-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.dashboard-list li:last-child {
+  border-bottom: none;
+}
+
+.dashboard-list a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.dashboard-list a:hover {
+  color: var(--accent);
+}
+
+.muted {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0;
+}

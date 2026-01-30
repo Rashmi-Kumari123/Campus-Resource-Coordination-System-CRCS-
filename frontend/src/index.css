@@ -1,0 +1,221 @@
+:root {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Campus / institutional palette */
+  --primary: #0d7377;
+  --primary-hover: #0a5c5f;
+  --accent: #14ffec;
+  --accent-muted: rgba(20, 255, 236, 0.15);
+  --surface: #1a1a2e;
+  --bg-main: #16213e;
+  --bg-card: #1a1a2e;
+  --bg-hover: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #e8e8e8;
+  --text-secondary: #a0a0a0;
+  --danger: #e94560;
+  --danger-muted: rgba(233, 69, 96, 0.2);
+  --success: #14ffec;
+  --warning: #ffc107;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg-main);
+  color: var(--text);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--primary);
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+}
+.page-header h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: var(--text);
+}
+.page-header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+  background: var(--bg-hover);
+}
+
+.btn-danger {
+  background: var(--danger-muted);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+.btn-danger:hover {
+  background: var(--danger);
+  color: white;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(13, 115, 119, 0.3);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+th {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+tr:hover td {
+  background: var(--bg-hover);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.badge-pending { background: rgba(255, 193, 7, 0.2); color: var(--warning); }
+.badge-confirmed { background: rgba(20, 255, 236, 0.2); color: var(--success); }
+.badge-cancelled { background: var(--danger-muted); color: var(--danger); }
+.badge-completed { background: var(--bg-hover); color: var(--text-secondary); }
+.badge-available { background: rgba(20, 255, 236, 0.2); color: var(--success); }
+.badge-booked { background: var(--danger-muted); color: var(--danger); }
+.badge-maintenance { background: rgba(255, 193, 7, 0.2); color: var(--warning); }
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+.pagination button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+}
+.pagination span {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+.alert-error {
+  background: var(--danger-muted);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+.alert-success {
+  background: rgba(20, 255, 236, 0.15);
+  color: var(--success);
+  border: 1px solid var(--accent);
+}
