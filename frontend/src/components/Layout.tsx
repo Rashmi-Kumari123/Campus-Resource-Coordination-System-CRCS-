@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { Link, NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { canManageResources, canApproveBookings, isAdmin } from '../types';
 import './Layout.css';
@@ -6,6 +6,7 @@ import './Layout.css';
 export function Layout() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = async () => {
     await logout();
@@ -15,6 +16,11 @@ export function Layout() {
   const canManage = user && canManageResources(user.role);
   const canApprove = user && canApproveBookings(user.role);
   const admin = user && isAdmin(user.role);
+
+  const path = location.pathname;
+  const isResourcesActive =
+    path === '/resources' || (path.startsWith('/resources/') && !path.startsWith('/resources/manage'));
+  const isManageResourcesActive = path.startsWith('/resources/manage');
 
   return (
     <div className="layout">
@@ -27,14 +33,14 @@ export function Layout() {
           <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'active' : '')}>
             Dashboard
           </NavLink>
-          <NavLink to="/resources" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink to="/resources" className={() => (isResourcesActive ? 'active' : '')}>
             Resources
           </NavLink>
           <NavLink to="/bookings" className={({ isActive }) => (isActive ? 'active' : '')}>
             Bookings
           </NavLink>
           {canManage && (
-            <NavLink to="/resources/manage" className={({ isActive }) => (isActive ? 'active' : '')}>
+            <NavLink to="/resources/manage" className={() => (isManageResourcesActive ? 'active' : '')}>
               Manage Resources
             </NavLink>
           )}
