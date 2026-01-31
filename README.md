@@ -162,7 +162,7 @@ The system supports the following user roles:
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/Rashmi-Kumari123/Campus-Resource-Coordination-System.git
+   git clone https://github.com/Rashmi-Kumari123/Campus_Resource_Coordination_System.git
    ```
 2. Build the parent pom:
    ```bash
