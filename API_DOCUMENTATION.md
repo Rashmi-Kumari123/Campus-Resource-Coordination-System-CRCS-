@@ -1313,6 +1313,3 @@ For issues or questions:
 - Check service logs for detailed error information
 
 ---
-
-**Last Updated**: January 28, 2025
-**API Version**: v1
