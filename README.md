@@ -19,7 +19,7 @@ CRCS is a **microservices-based platform** that centralizes resource and booking
 
 1. **Users** sign up or log in (JWT-based auth), then browse available resources, create booking requests, and manage their own bookings. They receive **email notifications** (e.g. booking confirmed or cancelled) via Kafka and the notification service.
 2. **Resource and facility managers** create and maintain resources (rooms, labs, equipment) and their status. **Facility managers and admins** approve or reject pending bookings; once approved, the booking is confirmed and the user is notified.
-3. All traffic goes through an **API Gateway** that validates JWTs and applies **role-based access** (USER, RESOURCE_MANAGER, FACILITY_MANAGER, ADMIN). Backend services (auth, user, resource, booking, notification) run independently and communicate via REST and Kafka (e.g. topic `CRCS-notification` for notification events).
+3. All traffic goes through an **API Gateway** that validates JWTs and applies **role-based access** (USER, RESOURCE_MANAGER, FACILITY_MANAGER, ADMIN). Backend services (auth, user, resource, booking, notification) run independently and communicate via REST and Kafka (e.g. topic `crcs-notification` for notification events).
 4. A **React frontend** (Vite + TypeScript) provides a landing page, login/signup, dashboard, resource browsing, booking creation, and (for managers) resource management and pending-booking approval. The UI reflects the user’s role and shows success feedback (e.g. “Booking created successfully”) where appropriate.
 
 End-to-end: signup → login → browse resources → create booking → (optional) approval → confirmation/cancellation and email notification. See [VISUAL_WORKFLOW.md](VISUAL_WORKFLOW.md) for flow diagrams.
